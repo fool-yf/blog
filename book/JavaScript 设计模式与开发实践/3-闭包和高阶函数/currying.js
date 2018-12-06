@@ -26,4 +26,4 @@ let t = currying(cost)
 
 t(10, 1);
 t(22);
-t();
+t();  // 33
