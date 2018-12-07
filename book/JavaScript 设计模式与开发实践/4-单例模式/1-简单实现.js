@@ -2,7 +2,7 @@
  * 缺点：增加了类的不透明性
  * Singleton的使用者必须使用Singleton.getSingle()才能产生单例
  */
-class 1 {
+class Singleton {
 	constructor(name) {
 		this.name = name;
 		this.instance = null;
