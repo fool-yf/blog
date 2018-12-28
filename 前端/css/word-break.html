@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .test {
+      width: 400px;
+      background: pink;
+    }
+
+    .break-all {
+      word-break: break-all;  /*允许在单词内换行。*/
+    }
+
+    .keep-all {
+      word-break: keep-all; /*只能在半角空格或连字符处换行。*/
+    }
+  </style>
+</head>
+<body>
+  <div class="test">
+    <h2>normal</h2>
+    <p>时间过得真快，不知不觉已经和小爱恋爱了999天了。
+				在这999天里真的是每天都很爱很爱小爱~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~给我的利息。
+    </p>
+  </div>
+
+  <div class="test break-all">
+    <h2>word-break: break-all;</h2>
+    <p>时间过得真快，不知不觉已经和小爱恋爱了999天了。
+      在这999天里真的是每天都很爱很爱小爱~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~给我的利息。
+    </p>
+  </div>
+
+  <div class="test keep-all">
+    <h2>word-break: keep-all;</h2>
+    <p>时间过得真快，不知不觉已经和小爱恋爱了999天了。
+      在这999天里真的是每天都很爱很爱小爱~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~给我的利息。
+    </p>
+  </div>
+</body>
+</html>
