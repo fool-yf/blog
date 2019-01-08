@@ -12,8 +12,8 @@ class Folder {
 	scan () {
 		let file;
 
+		console.log(`开始扫描文件夹：${this.name}`);
 		while (file = this.files.shift()) {
-			console.log(`开始扫描文件夹：${this.name}`);
 			file.scan();
 		}
 	}
