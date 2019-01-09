@@ -19,11 +19,20 @@ Beverage.prototype.pourInCup = function () {
 Beverage.prototype.addCondiments = function () {
 }
 
+/**
+ * hook  钩子方法
+ * @returns {boolean}
+ */
+Beverage.prototype.isAddCondiments = function () {
+	return true;
+}
+
+
 Beverage.prototype.init = function () {
 	this.boilWater()
 	this.brew()
 	this.pourInCup()
-	this.addCondiments()
+	this.isAddCondiments() && this.addCondiments()
 }
 
 /**
@@ -46,6 +55,10 @@ Tea.prototype.pourInCup = function () {
 
 Tea.prototype.addCondiments = function () {
 	console.log('加柠檬')
+}
+
+Tea.prototype.isAddCondiments = function () {
+	return false;
 }
 
 /**
