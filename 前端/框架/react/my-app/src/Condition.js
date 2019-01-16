@@ -10,19 +10,15 @@ export default class Condition extends Component {
 		}
 	}
 
+	// 属性初始化
 	handleClick = () => {
-		this.setState((pervState) => ({
-			isToggle: !pervState.isToggle
+		this.setState((prevState) => ({
+			isToggle: !prevState.isToggle
 		}))
 	}
 
 	render() {
-		let comp = null;
-		if (this.state.isToggle) {
-			comp = <ConditionT/>
-		} else {
-			comp = <ConditionF/>
-		}
+		let comp = this.state.isToggle ? <ConditionT/> : <ConditionF/>; // 元素变量
 
 		return (
 			<div>
