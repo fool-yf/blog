@@ -11,6 +11,9 @@ class Light {
 		this.currentState = this.offLightState;
 	}
 
+	/**
+	 * 通过ts可以做一个抽象类的接口，子类继承。避免状态类忘记定义函数
+	 */
 	buttonClick() {
 		this.currentState.buttonClick();
 	}
