@@ -10,17 +10,14 @@ export default class NameForm extends Component {
 			selectValue: '1'
 		}
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSelectChange = this.handleSelectChange.bind(this);
 	}
 
-	handleSubmit(e) {
-		alert(`input value: ${this.state.value}` );
+	handleSubmit = (e) => {
+		alert(`input value: ${JSON.stringify(this.state)}` );
 		e.preventDefault();
 	}
 
-	handleChange(e) {
+	handleChange = (e) => {
 		const target = e.target;
 		const name = target.name;
 		const type = target.type;
@@ -31,7 +28,7 @@ export default class NameForm extends Component {
 		})
 	}
 
-	handleSelectChange(e) {
+	handleSelectChange = (e) => {
 		this.setState({
 			selectValue: e.target.value
 		})
