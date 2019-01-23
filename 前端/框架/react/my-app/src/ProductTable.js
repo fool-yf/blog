@@ -21,7 +21,7 @@ export default class ProductTable extends Component {
 		})
 
 		return (
-			<table>
+			<table class="table">
 				<thead>
 				<tr>
 					<th>name</th>
