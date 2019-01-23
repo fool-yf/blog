@@ -65,11 +65,14 @@ class App extends Component {
           <Calc/>
 
           <h4>组合</h4>
+
+          <h5>组合1：children</h5>
           <WelcomeDialog/>
+
+          <h5>组合2: 自定义属性</h5>
           <SplitPane
-            left={
-              <Welcome name="组合"/>
-            } right={
+            left='hello'
+            right={
               <Buttons/>
             }/>
 
