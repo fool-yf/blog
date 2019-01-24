@@ -5,10 +5,9 @@ export default class RefInputDom extends Component {
 		super(props)
 		
 		this.textInput = React.createRef();
-		this.handleInputFocus = this.handleInputFocus.bind(this);
 	}
 	
-	handleInputFocus() {
+	handleInputFocus = () => {
 		this.textInput.current.focus();
 	}
 	
