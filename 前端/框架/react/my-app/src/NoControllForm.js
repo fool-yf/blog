@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 
 export default class NoControllForm extends Component {
-	constructor(props) {
-		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	handleSubmit(e) {
+	handleSubmit = (e) => {
 		alert(`${this.input.value}`)
 		e.preventDefault();
 	}
