@@ -2,11 +2,9 @@ function currying(fn) {
 	let args = []
 
 	return function () {
-		if (arguments.length) {
-			[].push.apply(args, arguments)
-		} else {
-			fn.call(this, args)
-		}
+		// arguments.length ? [].push.apply(args, arguments) : fn.call(this, args)
+		console.log(...arguments);
+		arguments.length ? args.push(...arguments) : fn.call(this, args)
 	}
 }
 
@@ -25,5 +23,6 @@ function cost() {
 let t = currying(cost)
 
 t(10, 1);
+t(10, 1, 1);
 t(22);
-t();  // 33
+t();  // 45
