@@ -2,8 +2,6 @@ function currying(fn) {
 	let args = []
 
 	return function () {
-		// arguments.length ? [].push.apply(args, arguments) : fn.call(this, args)
-		console.log(...arguments);
 		arguments.length ? args.push(...arguments) : fn.call(this, args)
 	}
 }
