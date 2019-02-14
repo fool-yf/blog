@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .ellipsis {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ellipsis::before {
+      content: '...';
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      right: 0;
+      width: 1.5em;
+      padding-left: 10px;
+      box-sizing: border-box;
+      background: #fff;
+      /*background: pink;*/
+    }
+
+    .ellipsis::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      /*background-color: #000;*/
+      /*opacity: 0.3;*/
+    }
+
+    p {
+      width: 200px;
+      max-height: 45px;
+      border: 2px solid #61dafb;
+      margin-bottom: 20px;
+    }
+
+    p.p1 {
+      width: 400px;
+    }
+
+    p.p4 {
+      text-align: justify;
+    }
+
+    p.p5 {
+      text-align: justify;
+    }
+
+    p.p5::before {
+      background: linear-gradient(to right,rgba(255,255,255,0),#fff 50%,#fff);
+    }
+  </style>
+</head>
+<body>
+  <h4>单行不需要省略</h4>
+  <p class="ellipsis p1">
+    天微微亮，陈平安离开客栈
+  </p>
+
+  <h4>多行不需要省略</h4>
+  <p class="ellipsis p2">
+    天微微亮，陈平安离开客栈，与趴在
+  </p>
+
+  <h4>多行不需要省略</h4>
+  <p class="ellipsis p3">
+    天微微亮，陈平安离开客栈，与趴在柜台那边打盹的伙计说了声退房。年轻伙计也不以为意，
+  </p>
+
+  <h4>多行超出，需要省略(text-align: justify;)</h4>
+  <p class="ellipsis p4">
+    天微微亮，陈平安离开客栈，与趴在柜台那边打盹的伙计说了声退房。年轻伙计也不以为意，
+  </p>
+
+  <h4>多行超出，需要省略(p {text-align: justify;}  p::before {
+    background: linear-gradient(to right,rgba(255,255,255,0),#fff 50%,#fff);
+    })</h4>
+  <p class="ellipsis p5">
+    天微微亮，陈平安离开客栈，与趴在柜台那边打盹的伙计说了声退房。年轻伙计也不以为意，
+  </p>
+</body>
+</html>
