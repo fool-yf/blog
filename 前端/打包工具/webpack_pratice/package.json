@@ -11,6 +11,8 @@
     "3-devServer": "webpack-dev-server --open --config webpack.config-3.js",
     "4-HMR": "webpack-dev-server --open --hotOnly --config webpack.config-4.js",
     "5-treeShaking": "webpack --config webpack.config-5.js",
+    "6-start": "webpack-dev-server --open --config webpack.dev-6.js",
+    "6-build": "webpack --config webpack.prod-6.js",
     "build": "webpack"
   },
   "author": "",
@@ -22,10 +24,12 @@
     "html-webpack-plugin": "3.2.0",
     "image-webpack-loader": "4.6.0",
     "style-loader": "0.23.1",
+    "uglifyjs-webpack-plugin": "2.1.2",
     "webpack": "4.29.6",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.2.1",
-    "webpack-manifest-plugin": "2.0.4"
+    "webpack-manifest-plugin": "2.0.4",
+    "webpack-merge": "4.2.1"
   },
   "dependencies": {
     "lodash": "4.17.11"
