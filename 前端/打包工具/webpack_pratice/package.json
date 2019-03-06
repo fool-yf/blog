@@ -15,6 +15,7 @@
     "6-build": "webpack --config webpack.prod-6.js",
     "7-codeSplitting": "webpack --config webpack.config-7.js",
     "8-cache": "webpack --config webpack.config-8.js",
+    "9-library": "webpack --config webpack.config-9.js",
     "build": "webpack"
   },
   "author": "",
@@ -34,6 +35,7 @@
     "webpack-merge": "4.2.1"
   },
   "dependencies": {
-    "lodash": "4.17.11"
+    "lodash": "4.17.11",
+    "webpack-numbers-check": "1.0.0"
   }
 }
