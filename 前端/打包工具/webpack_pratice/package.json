@@ -20,6 +20,7 @@
     "11-build": "webpack --config webpack.config-11.js",
     "11-pwa": "http-server dist11",
     "12-ts": "webpack --config webpack.config-12.js",
+    "13-env": "webpack --env.NODE_ENV=local --env.production --config webpack.config-13.js",
     "build": "webpack"
   },
   "author": "",
