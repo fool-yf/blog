@@ -25,7 +25,7 @@ module.exports = smp.wrap({
 		]
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js']
+		extensions: ['.tsx', '.ts', '.js']  // import引入时可以不带扩展名，会覆盖默认数组
 	},
 	plugins: [
 		new CleanWebpackPlugin(['dist12']),
