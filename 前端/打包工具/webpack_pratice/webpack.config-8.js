@@ -14,7 +14,7 @@ module.exports = {
 		app: './src/8-cache/index.js'
 	},
 	output: {
-		filename: '[name].[chunkhash].bundle.js',
+		filename: '[name].[contenthash].bundle.js',
 		path: path.resolve(__dirname, 'dist8')
 	},
 	plugins: [
