@@ -1,3 +1,6 @@
+/**
+ * 引用： http://hcysun.me/2016/04/28/JavaScript%E5%AE%9E%E7%8E%B0MVVM%E4%B9%8B%E6%88%91%E5%B0%B1%E6%98%AF%E6%83%B3%E7%9B%91%E6%B5%8B%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8F%98%E5%8C%96/
+ */
 class V {
 	constructor(obj, callback) {
 		this.callback = callback;
@@ -55,7 +58,7 @@ class V {
 	}
 
 	/**
-	 * 数组方法的重写
+	 * 代理数据方法
 	 * @param array
 	 */
 	overrideArrayProto (array) {
@@ -76,7 +79,7 @@ class V {
 					let arg =  Array.from(arguments);
 					result = arrayPrototype[method].apply(this, arg);
 
-					self.observe(this);
+					// self.observe(this);
 					self.callback(oldArray, this);
 
 					return result;
@@ -87,6 +90,7 @@ class V {
 			})
 		}, this)
 
+		// __proto__ (隐式原型: 指向构造函数的prototype)
 		array.__proto__ = overrideProto;
 	}
 }
@@ -105,5 +109,11 @@ let v = new V(obj, function (val, newVal) {
 	console.log(`oldVal: ${JSON.stringify(val)}, newVal: ${JSON.stringify(newVal)}`)
 })
 
-obj.b.d.push(6);
+obj.b.d.reverse();
+console.log(JSON.stringify(obj));
+console.log(`..............`)
+obj.b.d.push(3)
+console.log(JSON.stringify(obj))
+console.log(`..............`)
+obj.b.d.push(4)
 console.log(JSON.stringify(obj))
