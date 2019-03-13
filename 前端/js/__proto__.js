@@ -1,5 +1,6 @@
 /**
  * __proto__： 隐式原型，默认指向该对象的构造函数的原型(prototype)
+ * 只有函数才有prototype属性
  * Object.__prop__ === Function.__proto__ === F.__proto__ === Function.prototype
  * Object.prototype  ===  F.prototype.__proto__  === Function.prototype.__proto__
  * Object.prototype.__proto__ === null
