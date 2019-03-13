@@ -17,13 +17,20 @@ class V {
 	 * 绑定所有属性
 	 * @param obj
 	 */
-	observe(obj) {
+	observe(obj, path) {
 		if (this.is('Array', obj)) {
-			this.overrideArrayProto(obj);
+			this.overrideArrayProto(obj, path);
 		}
 
 		Object.keys(obj).forEach((key) => {
 			let val = obj[key];
+			let pathArray = path && path.slice(0);
+
+			if (pathArray) {
+				pathArray.push(key);
+			} else {
+				pathArray = [key];
+			}
 
 			Object.defineProperty(obj, key, {
 				get: () => {
@@ -32,17 +39,17 @@ class V {
 				set: (newVal) => {
 					if (val !== newVal) {
 						if (this.is('Object', newVal)|| this.is('Array', obj[key])) {
-							this.observe(newVal)
+							this.observe(newVal, pathArray)
 						}
 
-						this.callback(val, newVal);
+						this.callback(val, newVal, pathArray);
 						val = newVal;
 					}
 				}
 			})
 
 			if (this.is('Object', obj[key]) || this.is('Array', obj[key])) {
-				this.observe(obj[key])
+				this.observe(obj[key], pathArray)
 			}
 		})
 	}
@@ -61,7 +68,7 @@ class V {
 	 * 代理数据方法
 	 * @param array
 	 */
-	overrideArrayProto (array) {
+	overrideArrayProto (array, path) {
 		const OAM = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'];
 		let arrayPrototype = Array.prototype;
 		let overrideProto = Object.create(arrayPrototype);
@@ -80,13 +87,13 @@ class V {
 					result = arrayPrototype[method].apply(this, arg);
 
 					// self.observe(this);
-					self.callback(oldArray, this);
+					self.callback(oldArray, this, path);
 
 					return result;
 				},
 				writable: true,
 				configurable: true,
-				enumerable: true
+				enumerable: false
 			})
 		}, this)
 
@@ -105,15 +112,12 @@ let obj = {
 		}
 	}
 }
-let v = new V(obj, function (val, newVal) {
-	console.log(`oldVal: ${JSON.stringify(val)}, newVal: ${JSON.stringify(newVal)}`)
+let v = new V(obj, function (val, newVal, path) {
+	console.log(`oldVal: ${JSON.stringify(val)}, newVal: ${JSON.stringify(newVal)} path: ${path}`)
 })
 
-obj.b.d.reverse();
-console.log(JSON.stringify(obj));
-console.log(`..............`)
 obj.b.d.push(3)
 console.log(JSON.stringify(obj))
 console.log(`..............`)
-obj.b.d.push(4)
+obj.a = 2;
 console.log(JSON.stringify(obj))
