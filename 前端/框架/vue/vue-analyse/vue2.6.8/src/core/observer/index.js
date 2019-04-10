@@ -206,7 +206,7 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
   }
   if (Array.isArray(target) && isValidArrayIndex(key)) {
     target.length = Math.max(target.length, key)
-    target.splice(key, 1, val)
+    target.splice(key, 1, val)  // 利用数据的变异方法splice来完成数据元素的删除，添加，替换等操作
     return val
   }
   if (key in target && !(key in Object.prototype)) {
