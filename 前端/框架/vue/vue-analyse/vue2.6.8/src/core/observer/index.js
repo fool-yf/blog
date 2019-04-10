@@ -47,6 +47,12 @@ export class Observer {
     /**
      * 为数据对象定义了一个__ob__属性（该属性不可枚举）
      * 这个属性的值就是当前Observer实例对象
+     *
+     * __ob__: {
+     *   value: data,
+     *   dep: new Dep(),
+     *   vmCount: 0
+     * }
      */
     def(value, '__ob__', this)
     if (Array.isArray(value)) {
@@ -136,6 +142,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 
 /**
  * Define a reactive property on an Object.
+ * 将数据对象的数据属性转换为访问器属性
  */
 export function defineReactive (
   obj: Object,
@@ -165,7 +172,9 @@ export function defineReactive (
     get: function reactiveGetter () {
       const value = getter ? getter.call(obj) : val
       if (Dep.target) {
+        // 每一个数据字段都通过闭包引用着自己的dep常量(收集依赖)
         dep.depend()
+        // childOb收集的依赖的触发时机是在使用Vue.set给数据对象添加新属性时触发
         if (childOb) {
           childOb.dep.depend()
           if (Array.isArray(value)) {
