@@ -39,10 +39,15 @@ export class Observer {
   dep: Dep;
   vmCount: number; // number of vms that have this object as root $data
 
+  // value = data
   constructor (value: any) {
     this.value = value
     this.dep = new Dep()
     this.vmCount = 0
+    /**
+     * 为数据对象定义了一个__ob__属性（该属性不可枚举）
+     * 这个属性的值就是当前Observer实例对象
+     */
     def(value, '__ob__', this)
     if (Array.isArray(value)) {
       if (hasProto) {
@@ -112,7 +117,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
     return
   }
   let ob: Observer | void
-  if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
+  if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {  // 避免重复观测
     ob = value.__ob__
   } else if (
     shouldObserve &&

@@ -127,6 +127,7 @@ function initData (vm: Component) {
   const props = vm.$options.props
   const methods = vm.$options.methods
   let i = keys.length
+  // 避免属性被覆盖（因为我们可以通过实例对象代理访问data、props、method）
   while (i--) {
     const key = keys[i]
     if (process.env.NODE_ENV !== 'production') {
@@ -143,7 +144,9 @@ function initData (vm: Component) {
         `Use prop default value instead.`,
         vm
       )
+      // vue 是不会代理那些键名以 $ 或 _ 开头的字段的，因为 Vue 自身的属性和方法都是以 $ 或 _ 开头的，所以这么做是为了避免与 Vue 自身的属性和方法相冲突。
     } else if (!isReserved(key)) {
+      // 在实例对象上定义与data数据字段同名的访问器属性，这些属性代理的值是vm._data上对应属性的值
       proxy(vm, `_data`, key)
     }
   }
@@ -153,7 +156,7 @@ function initData (vm: Component) {
 
 export function getData (data: Function, vm: Component): any {
   // #7573 disable dep collection when invoking data getters
-  pushTarget()
+  pushTarget()  // 防止使用 props 数据初始化 data 数据时收集冗余的依赖
   try {
     return data.call(vm, vm)
   } catch (e) {
