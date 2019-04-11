@@ -187,6 +187,10 @@ export function mountComponent (
     }
   } else {
     updateComponent = () => {
+      /**
+       * vm._render() 调用 vm.$options.render 函数并返回生成的虚拟节点(vnode)
+       * vm._update() 把vm._render 函数生成的虚拟节点渲染成真正的 DOM
+       */
       vm._update(vm._render(), hydrating)
     }
   }
