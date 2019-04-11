@@ -24,6 +24,7 @@ Vue.prototype.$mount = function (
   el = el && query(el)
 
   /* istanbul ignore if */
+  // 挂载点的本意是 组件挂载的占位，它将会被组件自身的模板 替换掉
   if (el === document.body || el === document.documentElement) {
     process.env.NODE_ENV !== 'production' && warn(
       `Do not mount Vue to <html> or <body> - mount to normal elements instead.`
@@ -91,7 +92,9 @@ Vue.prototype.$mount = function (
 function getOuterHTML (el: Element): string {
   if (el.outerHTML) {
     return el.outerHTML
-  } else {
+  }
+  // IE9-11中svg标签元素没有innerHTML和outerHTML
+  else {
     const container = document.createElement('div')
     container.appendChild(el.cloneNode(true))
     return container.innerHTML
