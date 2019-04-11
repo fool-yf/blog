@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .content-box, .border-box {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      border: 20px solid #3c763d;
+      margin: 10px;
+    }
+
+    .content-box {
+      box-sizing: content-box;
+    }
+
+    .border-box {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h2>box-sizing: content-box（默认，只计算宽度和宽度）</h2>
+  <div class="content-box"></div>
+  <h2>box-sizing: border-box(包括padding和border)</h2>
+  <div class="border-box"></div>
+</body>
+</html>
