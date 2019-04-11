@@ -17,6 +17,7 @@ const idToTemplate = cached(id => {
 })
 
 const mount = Vue.prototype.$mount
+// 将模板（template）字符串编译为渲染函数（render）
 Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
@@ -65,6 +66,7 @@ Vue.prototype.$mount = function (
         mark('compile')
       }
 
+      // 将模板（template）字符串编译为渲染函数（render）
       const { render, staticRenderFns } = compileToFunctions(template, {
         outputSourceRange: process.env.NODE_ENV !== 'production',
         shouldDecodeNewlines,
