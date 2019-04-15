@@ -138,6 +138,13 @@ export function lifecycleMixin (Vue: Class<Component>) {
   }
 }
 
+/**
+ * 挂载组件
+ * @param vm
+ * @param el
+ * @param hydrating
+ * @returns {Component}
+ */
 export function mountComponent (
   vm: Component,
   el: ?Element,
@@ -168,6 +175,7 @@ export function mountComponent (
 
   let updateComponent
   /* istanbul ignore if */
+  // 定义并初始化updateComponent函数
   if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
     updateComponent = () => {
       const name = vm._name
@@ -198,13 +206,19 @@ export function mountComponent (
   // we set this to vm._watcher inside the watcher's constructor
   // since the watcher's initial patch may call $forceUpdate (e.g. inside child
   // component's mounted hook), which relies on vm._watcher being already defined
-  new Watcher(vm, updateComponent, noop, {
-    before () {
-      if (vm._isMounted && !vm._isDestroyed) {
-        callHook(vm, 'beforeUpdate')
+  new Watcher(
+    vm,
+    updateComponent,
+    noop,
+    {
+      before () {
+        if (vm._isMounted && !vm._isDestroyed) {
+          callHook(vm, 'beforeUpdate')
+        }
       }
-    }
-  }, true /* isRenderWatcher */)
+    },
+    true /* isRenderWatcher */
+  )
   hydrating = false
 
   // manually mounted instance, call mounted on self

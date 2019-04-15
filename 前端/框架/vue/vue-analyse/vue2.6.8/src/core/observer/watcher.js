@@ -22,6 +22,10 @@ let uid = 0
  * A watcher parses an expression, collects dependencies,
  * and fires callback when the expression value changes.
  * This is used for both the $watch() api and directives.
+ *
+ * Watcher 观察者实例将对 updateComponent 函数求值，updateComponent 函数的执行会间接触发渲染函数(vm.$options.render)的执行，
+ * 而渲染函数的执行则会触发数据属性的 get 拦截器函数，从而将依赖(观察者)收集，
+ * 当数据变化时将重新执行 updateComponent 函数，这就完成了重新渲染。同时我们把上面代码中实例化的观察者对象称为 渲染函数的观察者。
  */
 export default class Watcher {
   vm: Component;
