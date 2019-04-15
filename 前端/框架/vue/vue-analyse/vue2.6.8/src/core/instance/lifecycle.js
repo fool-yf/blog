@@ -217,7 +217,7 @@ export function mountComponent (
         }
       }
     },
-    true /* isRenderWatcher */
+    true /* isRenderWatcher  该观察者实例对象是否是渲染函数的观察者*/
   )
   hydrating = false
 

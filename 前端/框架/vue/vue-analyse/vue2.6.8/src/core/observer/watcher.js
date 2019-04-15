@@ -60,11 +60,11 @@ export default class Watcher {
     vm._watchers.push(this)
     // options
     if (options) {
-      this.deep = !!options.deep
-      this.user = !!options.user
+      this.deep = !!options.deep  // 深度观测
+      this.user = !!options.user  // 当前观察者实例对象是开发者定义的还是内部定义的
       this.lazy = !!options.lazy
-      this.sync = !!options.sync
-      this.before = options.before
+      this.sync = !!options.sync  // 告诉观察者当数据变化时是否同步求值并执行回调
+      this.before = options.before // watcher实例的钩子，数据变化之后，触发更新之前调用。
     } else {
       this.deep = this.user = this.lazy = this.sync = false
     }
@@ -72,13 +72,17 @@ export default class Watcher {
     this.id = ++uid // uid for batching
     this.active = true
     this.dirty = this.lazy // for lazy watchers
+
+    // 避免收集重复依赖，且移除无用依赖的功能
     this.deps = []
     this.newDeps = []
     this.depIds = new Set()
     this.newDepIds = new Set()
+
     this.expression = process.env.NODE_ENV !== 'production'
       ? expOrFn.toString()
       : ''
+
     // parse expression for getter
     if (typeof expOrFn === 'function') {
       this.getter = expOrFn

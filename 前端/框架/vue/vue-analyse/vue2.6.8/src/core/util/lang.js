@@ -30,7 +30,7 @@ export function def (obj: Object, key: string, val: any, enumerable?: boolean) {
 /**
  * Parse simple path.
  */
-const bailRE = new RegExp(`[^${unicodeRegExp.source}.$_\\d]`)
+const bailRE = new RegExp(`[^${unicodeRegExp.source}.$_\\d]`) // source返回一个正则的文本形式
 export function parsePath (path: string): any {
   if (bailRE.test(path)) {
     return
