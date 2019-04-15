@@ -135,9 +135,11 @@ export default class Watcher {
    */
   addDep (dep: Dep) {
     const id = dep.id
+    // 避免收集重复依赖（观察者watcher）
     if (!this.newDepIds.has(id)) {
       this.newDepIds.add(id)
       this.newDeps.push(dep)
+      // 在多次求值中避免收集重复依赖
       if (!this.depIds.has(id)) {
         dep.addSub(this)
       }
@@ -146,9 +148,13 @@ export default class Watcher {
 
   /**
    * Clean up for dependency collection.
+   * 将newDepIds赋值给depIds
+   * 将newDeps赋值给deps
+   * 然后清空newDepIds和newDeps
    */
   cleanupDeps () {
     let i = this.deps.length
+    // 检查prev(deps)在current(newDepIds)是否存在，不存在则销毁依赖
     while (i--) {
       const dep = this.deps[i]
       if (!this.newDepIds.has(dep.id)) {
