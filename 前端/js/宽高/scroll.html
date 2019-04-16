@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll</title>
+  <style>
+    body {
+      border: 40px solid #f2dede;
+    }
+    .wrap {
+      margin: 10px 10px;
+      padding: 20px;
+      border: 30px solid #fff400;
+    }
+    .inner {
+      margin: 10px auto;
+      padding: 20px;
+      width: 800px;
+      height: 400px;
+      overflow: scroll;
+      border: 30px solid red;
+    }
+    .content {
+      height: 1000px;
+      border: 1px solid #3c763d;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner">
+      <h2>offset</h2>
+      <div class="content">
+        scrollWidth = (dom的实际宽度) + dom.padding * 2 - 滚轴宽度<br/>
+
+        <p>scrollTop和scrollLeft：这对元素是可读写的，指的是当元素其中的内容超出其宽高的时候，元素被卷起的宽度和高度。</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
