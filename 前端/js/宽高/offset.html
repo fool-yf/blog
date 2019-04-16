@@ -7,8 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>offset</title>
   <style>
+    body {
+      border: 40px solid #f2dede;
+    }
     .wrap {
-      margin: 10px auto;
+      margin: 10px 10px;
       padding: 20px;
       border: 30px solid #fff400;
     }
@@ -34,9 +37,9 @@
         offsetWidth = dom.style.width + style.padding * 2 + style.border * 2<br/>
 
         <h4>父元素没有进行css定位（position: absolute/relative）[offsetParent: body]</h4>
+        <p>【chrome】offsetLeft = （dom距离body left的距离） + (当前元素的margin-left)</p>
         <h4>父元素进行css定位（position: absolute/relative）[offsetParent: 父元素]</h4>
-        <p>【IE8-10/chrome】offsetLeft = (offsetParent: padding-left) + (当前元素的margin-left)</p>
-        <p>【firefox】offsetLeft = （offsetParent：margin-left) + (offsetParent: padding-left) + (当前元素的margin-left)</p>
+        <p>【chrome】offsetLeft = (offsetParent: padding-left) + (当前元素的margin-left)</p>
       </div>
     </div>
   </div>
