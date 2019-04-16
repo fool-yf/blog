@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>client</title>
+  <title>offset</title>
   <style>
     .wrap {
       margin: 10px auto;
@@ -29,12 +29,14 @@
 <body>
   <div class="wrap">
     <div class="inner">
-      <h2>client</h2>
+      <h2>offset</h2>
       <div class="content">
-          clientWidth = dom.style.width + style.padding * 2 - 滚动轴宽度<br/>
+        offsetWidth = dom.style.width + style.padding * 2 + style.border * 2<br/>
 
-          clientTop = border-top 的 border-width<br/>
-          clientLeft = border-left 的 border-width
+        <h4>父元素没有进行css定位（position: absolute/relative）[offsetParent: body]</h4>
+        <h4>父元素进行css定位（position: absolute/relative）[offsetParent: 父元素]</h4>
+        <p>【IE8-10/chrome】offsetLeft = (offsetParent: padding-left) + (当前元素的margin-left)</p>
+        <p>【firefox】offsetLeft = （offsetParent：margin-left) + (offsetParent: padding-left) + (当前元素的margin-left)</p>
       </div>
     </div>
   </div>
