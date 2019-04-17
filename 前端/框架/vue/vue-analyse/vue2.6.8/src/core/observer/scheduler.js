@@ -157,9 +157,9 @@ function callActivatedHooks (queue) {
  */
 export function queueWatcher (watcher: Watcher) {
   const id = watcher.id
-  if (has[id] == null) {
+  if (has[id] == null) {  // 避免相同的观察者重复入队
     has[id] = true
-    if (!flushing) {
+    if (!flushing) {  // 当前队列是否在执行更新
       queue.push(watcher)
     } else {
       // if already flushing, splice the watcher based on its id

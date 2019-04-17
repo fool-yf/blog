@@ -39,6 +39,12 @@ let timerFunc
 // completely stops working after triggering a few times... so, if native
 // Promise is available, we will use it:
 /* istanbul ignore next, $flow-disable-line */
+/**
+ * 任务队列分为宏队列（macro task, 包括setTimeout）和微队列(micro task，包括promise)
+ * 宏队列中两个不同的任务之间可能穿插着UI的重渲染
+ * 调用栈空闲后每次事件循环会从宏队列中读取一个任务并执行，在同一次事件循环内会将微队列中所有任务全部执行完毕（优先于宏队列）
+ * 我们在微队列中把所有在UI重渲染之前需要更新的数据全部更新，这样只需要一次重渲染就能得到最新的DOM，对提升性能有很大的帮助(优先使用promise,如果浏览器不支持则降级为setTimeout)
+ */
 if (typeof Promise !== 'undefined' && isNative(Promise)) {
   const p = Promise.resolve()
   timerFunc = () => {
