@@ -182,6 +182,7 @@ export default class Watcher {
     } else if (this.sync) {
       this.run()
     } else {
+      // 渲染函数的观察者是异步的
       queueWatcher(this)
     }
   }
@@ -204,7 +205,7 @@ export default class Watcher {
         // set new value
         const oldValue = this.value
         this.value = value
-        if (this.user) {
+        if (this.user) {  // 开发者定义的观察者（watch | $watch）
           try {
             this.cb.call(this.vm, value, oldValue)
           } catch (e) {
