@@ -33,5 +33,3 @@ var backspaceCompare = function(S, T) {
     return result.join('');
   }
 };
-
-console.log(backspaceCompare("ab#c", 'ad#c'))
