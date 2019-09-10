@@ -45,7 +45,7 @@ BSTIterator.prototype.init = function() {
   let stack = [this.root];
 
   while(stack.length !== 0){
-    let node = stack.shift();
+    let node = stack.pop();
     res.push(node.val);
 
     if(node.right){
@@ -67,7 +67,7 @@ BSTIterator.prototype.init = function() {
  */
 BSTIterator.prototype.next = function() {
   if (this.result) {
-    return this.result.pop();
+    return this.result.shift();
   }
 };
 
