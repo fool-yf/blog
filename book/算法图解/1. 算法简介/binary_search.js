@@ -15,13 +15,11 @@ function binary_search(list, item) {
     let guess;
 
     while (low <= high) {
-        mid = parseInt(low+(high-low)/2);
+        mid = parseInt((low + high)/2);
 
         guess = list[mid];
 
-        console.log(`item: ${item} low: ${low} high: ${high} mid: ${mid}`)
         if (guess === item) {
-            console.log(`index: ${mid}`)
             return mid;
         }
 
@@ -32,9 +30,8 @@ function binary_search(list, item) {
         }
     }
 
-    console.log('不存在...')
     return -1;
 }
 
-let arr = [1,2,3,4,5,6,7,8,9,10,11];
-binary_search(arr, 9)
+let arr = [1,2,3,4,5,6,7];
+console.log(binary_search(arr, 1))
