@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "webpack-numbers-check": "1.0.0"
   }
 }
